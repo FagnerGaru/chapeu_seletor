@@ -75,24 +75,25 @@ tratamento = function(opcao)
   end
 
   local lista_parte = {
-    "A",
+    "1",
     "DECIDI",
     "CHAMA",
     "MONITO",
 
-    "B",
+    "2",
     "ALIMENT",
     "DORMITORIO",
     "ADORAVEL",
 
-    "C",
+    "3",
     "GRIT",
+    "AJUDA",
     "LIVRA",
     "ALGUEM",
     "MOSTRO",
     "NOJENTO",
 
-    "D",
+    "4",
     "ATRAI",
     "HAGRID",
     "NINGUEM",
@@ -101,24 +102,25 @@ tratamento = function(opcao)
 
   local lista_palavra = {
 
-    ["A"] = "CORVINAL",
+    ["1"] = "CORVINAL",
     ["DECIDI"] = "CORVINAL",
     ["CHAMA"] = "CORVINAL",
     ["MONITO"] = "CORVINAL",
 
-    ["B"] = "LUFALUFA",
+    ["2"] = "LUFALUFA",
     ["ALIMENT"] = "LUFALUFA",
     ["DORMITORIO"] = "LUFALUFA",
     ["ADORAVEL"] = "LUFALUFA",
 
-    ["C"] = "SONSERINA",
+    ["3"] = "SONSERINA",
     ["GRIT"] = "SONSERINA",
+    ["AJUDA"] = "SONSERINA",
     ["LIVRA"] = "SONSERINA",
     ["ALGUEM"] = "SONSERINA",
     ["MOSTRO"] = "SONSERINA",
     ["NOJENTO"] = "SONSERINA",
 
-    ["D"] = "GRIFINORIA",
+    ["4"] = "GRIFINORIA",
     ["ATRAI"] = "GRIFINORIA",
     ["HAGRID"] = "GRIFINORIA",
     ["NINGUEM"] = "GRIFINORIA",
@@ -133,6 +135,12 @@ tratamento = function(opcao)
         parte_encontrada = tostring(string.sub(palavra_frase, inicio, fim))
       end
     end
+  end
+
+  local palavra_encontrada = tostring(lista_palavra[parte_encontrada])
+  return palavra_encontrada
+end
+
   end
 
   local palavra_encontrada = tostring(lista_palavra[parte_encontrada])
