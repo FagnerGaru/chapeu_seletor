@@ -1,25 +1,40 @@
+dofile("trata_dados.lua")
+
 saudacao = function()
-  local interacao
-  repeat
-    interacao = io.read()
+  print("Olá, jovem! Aí está você! Vamos, vamos! Apresse-se, ainda há muitos alunos para fazer o teste! Suba aqui e deixe que o Chapéu Seletor nos diga a qual casa você pertence. Ele irá ler seus pensamentos e sentimentos mais profundos para decidir para onde você irá. Vamos começar?\n")
 
-    if interacao == "" then
-      print("Ora, meu caro, eu ainda não posso ler sua mente! \n Pelas barbas de Merlyn, me diga algo para continuarmos!")
-    else
-      print("Humm... Você é interessante...🧙‍♂️")
-      print("Eu sou o Chapéu Seletor, e irei lhe dizer a qual das casas de Hogwarts você se encaixará melhor. \n Agora, me responda algumas perguntas...")
+  -- Defina o tempo limite em segundos (30 segundos)
+  local tempoLimite = 3
 
-      pergunta1()
+  -- Defina a função para ler a entrada do usuário com timeout
+  local function lerComTimeout()
+    local tempoInicio = os.time()
+    local entradaUsuario = io.read("*l")
+
+    while entradaUsuario == nil and os.time() - tempoInicio < tempoLimite do
+      entradaUsuario = io.read("*l")
     end
-  until interacao ~= ""
+
+    return entradaUsuario
+  end
+
+  local interacao = lerComTimeout()
+
+  if interacao == nil then
+    print("Ora, meu caro, eu ainda não posso ler sua mente! \n Pelas barbas de Merlyn, me diga algo para continuarmos!\n")
+  else
+
+    pergunta1()
+  end
 end
 
 pergunta1 = function()
-  print("Qual seu animal de estimação favorito? \n" ..
-    "Gato 🙀 \n" ..
-    "Cão 🐕 \n" ..
-    "Pássaro 🐦 \n" ..
-    "Peixe 🐠 \n"
+  print("\nVocê vê um filhote de Acromântula andando pelos corredores da escola, o que você faz?\n\n" ..
+    "A. Chama o monitor da sua casa para decidir o que fazer com a criatura.\n" ..
+    "B. Alimenta ele e leva para seu dormitório, afinal é uma criatura adorável.\n" ..
+    "C. Sai gritando por ajuda, afinal alguém tem que se livrar desse monstro nojento.\n" ..
+    "D. Atrairia a criatura para a casa do Hagrid sem contar para ninguém.\n\n "
+
   )
   local resposta1 = io.read()
   if resposta1 then
@@ -30,35 +45,5 @@ pergunta1 = function()
   end
 end
 
-tratamento = function(opcao)
-  dado = string.lower(opcao)
-
-  local lista_parte = {
-    "gato",
-    "cão",
-    "pássaro",
-    "peixe"
-  }
-
-  local lista_palavra = {
-    ["gato"] = "son",
-    ["cão"] = "grif",
-    ["pássaro"] = "corv",
-    ["peixe"] = "lufa"
-  }
-
-  for _, palavra_frase in ipairs(opcao) do
-    for _, palavra_compara in ipairs(lista_parte) do
-      local inicio, fim = string.find(palavra_frase, palavra_compara)
-
-      if inicio then
-        parte_encontrada = tostring(string.sub(palavra_frase, inicio, fim))
-      end
-    end
-  end
-
-  local palavra_encontrada = tostring(lista_palavra[parte_encontrada])
-  return palavra_encontrada
-end
 
 saudacao()
