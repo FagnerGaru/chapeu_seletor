@@ -30,10 +30,10 @@ end
 
 pergunta1 = function()
   print("\nVocê vê um filhote de Acromântula andando pelos corredores da escola, o que você faz?\n\n" ..
-    "A. Chama o monitor da sua casa para decidir o que fazer com a criatura.\n" ..
-    "B. Alimenta ele e leva para seu dormitório, afinal é uma criatura adorável.\n" ..
-    "C. Sai gritando por ajuda, afinal alguém tem que se livrar desse monstro nojento.\n" ..
-    "D. Atrairia a criatura para a casa do Hagrid sem contar para ninguém.\n\n "
+    "1. Chama o monitor da sua casa para decidir o que fazer com a criatura.\n" ..
+    "2. Alimenta ele e leva para seu dormitório, afinal é uma criatura adorável.\n" ..
+    "3. Sai gritando por ajuda, afinal alguém tem que se livrar desse monstro nojento.\n" ..
+    "4. Atrairia a criatura para a casa do Hagrid sem contar para ninguém.\n\n "
 
   )
   local resposta1 = io.read()
